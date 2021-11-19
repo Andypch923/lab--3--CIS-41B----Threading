@@ -36,18 +36,51 @@ class DataBase:
     #close our connection
         conn.close()
 
-    #fetch country names for the top 10 countries with highest co2 emissions in 2017
-    def fetch2017top10Countries(self):
+    def fetchYears(self):
         conn = sqlite3.connect('GreenhouseGas.db')
         cursor = conn.cursor()
-        cursor.execute('SELECT Country FROM temperatureTable ORDER BY Fossil2017inPercentage DESC LIMIT 10')
+        cursor.execute('SELECT Year FROM GreenhouseGasTable') 
         items = [ x[0] for x in cursor.fetchall()]  
         return items
 
-    #fetch country emission percentages for the top 10 countries with highest co2 emissions in 2017
-    def fetch2017top10Percentage(self):
+    def fetchCO2(self):
         conn = sqlite3.connect('GreenhouseGas.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT Fossil2017inPercentage FROM temperatureTable ORDER BY Fossil2017inPercentage DESC LIMIT 10")
+        cursor.execute('SELECT CO2 FROM GreenhouseGasTable')        
+        items = [ x[0] for x in cursor.fetchall()]  
+        return items
+
+    def fetchCH4(self):
+        conn = sqlite3.connect('GreenhouseGas.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT CH4 FROM GreenhouseGasTable')        
+        items = [ x[0] for x in cursor.fetchall()]  
+        return items
+    
+    def fetchN2O(self):
+        conn = sqlite3.connect('GreenhouseGas.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT N2O FROM GreenhouseGasTable')        
+        items = [ x[0] for x in cursor.fetchall()]  
+        return items
+
+    def fetchCFCs(self):
+        conn = sqlite3.connect('GreenhouseGas.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT CFCs FROM GreenhouseGasTable')        
+        items = [ x[0] for x in cursor.fetchall()]  
+        return items
+    
+    def fetchHCFCs(self):
+        conn = sqlite3.connect('GreenhouseGas.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT HCFCs FROM GreenhouseGasTable')        
+        items = [ x[0] for x in cursor.fetchall()]  
+        return items
+    
+    def fetchHFCs(self):
+        conn = sqlite3.connect('GreenhouseGas.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT HFCs FROM GreenhouseGasTable')        
         items = [ x[0] for x in cursor.fetchall()]  
         return items
